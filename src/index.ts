@@ -20,7 +20,7 @@ async function main() {
 
   const app = express();
   app.use(cookieParser());
-  app.set("Access-Control-Allow-Origin", ["http://localhost:5173"]);
+  app.set("Access-Control-Allow-Origin", [process.env["CLIENT_URL"] as string]);
   app.set("Access-Control-Allow-Credentials", true);
 
   const server = new ApolloServer({
@@ -40,7 +40,7 @@ async function main() {
   const corsOptions = {
     origin: [
       "https://studio.apollographql.com",
-      "http://localhost:4000",
+      process.env["NODE_URL"] as string,
       process.env["CLIENT_URL"] as string,
     ],
     credentials: true,
