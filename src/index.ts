@@ -42,6 +42,8 @@ async function main() {
       "https://studio.apollographql.com",
       process.env["NODE_URL"] as string,
       process.env["CLIENT_URL"] as string,
+      "http://localhost:4173",
+      "http://localhost:5173",
     ],
     credentials: true,
   };
