@@ -20,7 +20,10 @@ async function main() {
 
   const app = express();
   app.use(cookieParser());
-  app.set("Access-Control-Allow-Origin", [process.env["CLIENT_URL"] as string]);
+  app.set("Access-Control-Allow-Origin", [
+    process.env["CLIENT_URL"] as string,
+    "http://localhost:4173",
+  ]);
   app.set("Access-Control-Allow-Credentials", true);
 
   const server = new ApolloServer({
