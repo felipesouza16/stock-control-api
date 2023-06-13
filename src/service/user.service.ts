@@ -41,7 +41,7 @@ class UserService {
     context.res.cookie("accessToken", token, {
       maxAge: 60 * 60 * 1000, // 1 hour
       httpOnly: false,
-      domain: process.env["CLIENT_URL"] as string,
+      domain: "stock-control-web",
       path: "/",
       sameSite: "none",
       secure: true,
