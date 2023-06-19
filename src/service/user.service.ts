@@ -41,7 +41,6 @@ class UserService {
     context.res.cookie("accessToken", token, {
       maxAge: 60 * 60 * 1000, // 1 hour
       httpOnly: false,
-      domain: "onrender",
       path: "/",
       sameSite: "none",
       secure: true,
