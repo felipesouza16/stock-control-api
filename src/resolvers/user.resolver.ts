@@ -23,13 +23,7 @@ export default class UserResolver {
   @Mutation(() => Boolean)
   logout(@Ctx() context: Context) {
     try {
-      context.res.clearCookie("accessToken", {
-        maxAge: 60 * 60 * 1000, // 1 hour
-        httpOnly: false,
-        path: "/",
-        sameSite: "none",
-        secure: true,
-      });
+      context.res.clearCookie("accessToken");
       return true;
     } catch (error) {
       throw new ApolloError("Logout error.");
