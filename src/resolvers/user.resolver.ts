@@ -2,7 +2,7 @@ import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { CreateUserInput, LoginInput, User } from "../schema/user.schema";
 import UserService from "../service/user.service";
 import Context from "../types/context";
-import { CreateProductInput, Product } from "../schema/product.schema";
+import { ApolloError } from "apollo-server-core";
 
 @Resolver()
 export default class UserResolver {
@@ -22,8 +22,12 @@ export default class UserResolver {
 
   @Mutation(() => Boolean)
   logout(@Ctx() context: Context) {
-    context.res.clearCookie("accessToken");
-    return true;
+    try {
+      context.res.clearCookie("accessToken", {});
+      return true;
+    } catch (error) {
+      throw new ApolloError("Logout error.");
+    }
   }
 
   @Query(() => [User])
